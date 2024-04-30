@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ListPage(),
     );
@@ -34,25 +34,10 @@ class ListPage extends StatefulWidget {
 class _ListPageState extends State<ListPage> {
   List<Contato> contatos = [
     Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
-    Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
-    Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
-    Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
-    Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
-    Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
-    Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
-    Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
-    Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
-    Contato('Victor Ventura', 'victor@gmail.com', false),
-    Contato('Samuel Ribeiro', 'samuca@gmail.com', false),
+    Contato('Vanessa', 'vanessa@gmail.com', false),
+    Contato('Amanda', 'amanda@gmail.com', false),
+    Contato('Matheus', 'Mat@gmail.com', false),
+    Contato('Pedro', 'ped@gmail.com', false),
   ];
 
   int contador = 0;
@@ -79,12 +64,18 @@ class _ListPageState extends State<ListPage> {
               onPressed: () {
                 setState(() {
                   contatos[index].favorito = !contatos[index].favorito;
-                  contador = contatos.where((contato) => contato.favorito).length;
+                  
+                  if (contatos[index].favorito) {
+                    contador++;
+                  } else {
+                    contador--;
+                  }
                 });
               },
             ),
             leading: CircleAvatar(
-              backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=$index'),
+              backgroundImage:
+                  NetworkImage('https://i.pravatar.cc/150?img=$index'),
               radius: 30,
             ),
           );
